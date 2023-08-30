@@ -48,7 +48,22 @@ public class RelogioTddTest {
         assertEquals(relogioTeste.getSegundo(), LocalTime.now().getSecond());
     }
 
+    public void testetempoDecorridoCronometro() throws InterruptedException {
+        relogioTeste.iniciarCronometro();
 
+        // Aguarda 1 segundo
+        Thread.sleep(1000);
+
+        relogioTeste.pararCronometro();
+
+        long tempoDecorrido = relogioTeste.tempoDecorridoCronometro();
+
+        // A margem de erro pode ser pequena devido à precisão do sistema
+        long margemDeErro = 50;
+
+        // Verifica se o tempo decorrido está aproximadamente correto
+        assertEquals(1000, tempoDecorrido, margemDeErro);
+    }
 
 }
 
