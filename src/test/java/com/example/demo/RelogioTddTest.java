@@ -1,10 +1,13 @@
 package com.example.demo;
 
-import org.junit.jupiter.api.Test;
+import org.example.RelogioTdd;
 
+import java.time.LocalTime;
+
+import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 public class RelogioTddTest {
-    private Relogio relogioTeste = new Relogio();
+    private RelogioTdd relogioTeste = new RelogioTdd();
 
     @Test
     public void testeNecessarioFormatar24_Sim() {
@@ -18,7 +21,10 @@ public class RelogioTddTest {
 
     @Test
     public void testeFormatarHorario() {
-        relogioTeste.formatarHorario(25, 62, 75);
+        relogioTeste.setHora(25);
+        relogioTeste.setMinuto(62);
+        relogioTeste.setSegundo(75);
+        relogioTeste.formatarHorario();
         assertEquals(2, relogioTeste.getHora());
         assertEquals(3, relogioTeste.getMinuto());
         assertEquals(15, relogioTeste.getSegundo());
@@ -36,11 +42,12 @@ public class RelogioTddTest {
     }
 
     public void testeSincSistemaOperacional() {
-        relogio.testeSincHoraSistemaOperacional();
-        assertEquals(relogio.getHora(), LocalTime.now().getHour());
-        assertEquals(relogio.getMinuto(), LocalTime.now().getMinute());
-        assertEquals(relogio.getSegundo(), LocalTime.now().getSecond());
+        relogioTeste.sincSistemaOperacional();
+        assertEquals(relogioTeste.getHora(), LocalTime.now().getHour());
+        assertEquals(relogioTeste.getMinuto(), LocalTime.now().getMinute());
+        assertEquals(relogioTeste.getSegundo(), LocalTime.now().getSecond());
     }
+
 
 
 }
