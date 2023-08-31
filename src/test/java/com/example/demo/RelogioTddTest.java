@@ -41,6 +41,7 @@ public class RelogioTddTest {
         assertEquals(0, relogioTeste.getSegundo());
     }
 
+    @Test
     public void testeSincSistemaOperacional() {
         relogioTeste.sincSistemaOperacional();
         assertEquals(relogioTeste.getHora(), LocalTime.now().getHour());
@@ -48,15 +49,16 @@ public class RelogioTddTest {
         assertEquals(relogioTeste.getSegundo(), LocalTime.now().getSecond());
     }
 
+    @Test
     public void testetempoDecorridoCronometro() throws InterruptedException {
         relogioTeste.iniciarCronometro();
 
         // Aguarda 1 segundo
         Thread.sleep(1000);
 
-        relogioTeste.pararCronometro();
-
         long tempoDecorrido = relogioTeste.tempoDecorridoCronometro();
+
+        relogioTeste.pararCronometro();
 
         // A margem de erro pode ser pequena devido à precisão do sistema
         long margemDeErro = 50;

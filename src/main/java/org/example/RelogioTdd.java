@@ -7,6 +7,7 @@ public class RelogioTdd {
     private int minuto;
     private int segundo;
 
+
     //Cosnstrutor
     public RelogioTdd(){
     }
@@ -63,6 +64,8 @@ public class RelogioTdd {
         this.segundo = LocalTime.now().getSecond();
     }
 
+
+
     //Getters e Setters
     public int getHora() {
         return hora;
@@ -87,5 +90,7 @@ public class RelogioTdd {
     public void setSegundo(int segundo) {
         this.segundo = segundo;
     }
+
+
 }
 
