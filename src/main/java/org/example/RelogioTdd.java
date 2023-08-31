@@ -6,7 +6,8 @@ public class RelogioTdd {
     private int hora;
     private int minuto;
     private int segundo;
-
+    private long iniciar;
+    private boolean emExecucao = false;
 
     //Cosnstrutor
     public RelogioTdd(){
@@ -64,7 +65,31 @@ public class RelogioTdd {
         this.segundo = LocalTime.now().getSecond();
     }
 
+    public void iniciarCronometro() {
+        if (!emExecucao) {
+            iniciar = System.currentTimeMillis();
+            emExecucao = true;
+        }
+    }
 
+    public void pararCronometro() {
+        if (emExecucao) {
+            emExecucao = false;
+        }
+    }
+
+    public long tempoDecorridoCronometro() {
+        if (emExecucao) {
+            return System.currentTimeMillis() - iniciar;
+        } else {
+            return 0;
+        }
+    }
+
+    public void reiniciarCronometro() {
+        iniciar = 0;
+        emExecucao = false;
+    }
 
     //Getters e Setters
     public int getHora() {
@@ -91,6 +116,20 @@ public class RelogioTdd {
         this.segundo = segundo;
     }
 
+    public long getIniciar() {
+        return iniciar;
+    }
 
+    public void setIniciar(long iniciar) {
+        this.iniciar = iniciar;
+    }
+
+    public boolean isEmExecucao() {
+        return emExecucao;
+    }
+
+    public void setEmExecucao(boolean emExecucao) {
+        this.emExecucao = emExecucao;
+    }
 }
 
