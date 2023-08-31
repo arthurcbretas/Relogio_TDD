@@ -91,6 +91,10 @@ public class RelogioTdd {
         emExecucao = false;
     }
 
+    public void imprimir(){
+        System.out.printf("%02d:%02d:%02d\n", this.hora, this.minuto, this.segundo);
+    }
+
     //Getters e Setters
     public int getHora() {
         return hora;
